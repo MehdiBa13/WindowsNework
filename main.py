@@ -1,6 +1,7 @@
-import os, sys
-network = str(input("Enter the name of a network: "))
-def get_password(network):
-    res = os.system(f"netsh wlan show profile {network} key=clear")
-    return res
-get_password(network)
+import sys, os
+def get_password():
+    network = input("Enter the name of the network: ")
+    if sys.platform == "win32":
+        output = os.system(f"netsh wlan show profile name=\"{network}\" key=clear")
+        return output
+get_password()
